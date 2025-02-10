@@ -13,7 +13,7 @@ function cancel(){
 
 const texts = [
     "a WEB3 DEVELOPER",
-    "a NODE RUNNER",
+    "a NODE VALIDATOR",
     "BECOME BILLIONAIRE"
 ]
 
