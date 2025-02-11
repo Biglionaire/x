@@ -15,12 +15,16 @@ body {
   background-image: url("../img/background.jpg");
   overflow-x: hidden; /* Allow scrolling horizontally */
   overflow-y: auto;  /* Allow scrolling vertically */
+  margin-top: 0; /* Menghapus margin atas yang mungkin ada */
+  padding-top: 0;  /* Menghapus padding tambahan */
 }
 
 nav {
   width: 100%;
   height: 10vh;
   position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .nav-container {
@@ -30,8 +34,6 @@ nav {
   justify-content: space-around;
   align-items: center;
 }
-
-/* Subscrbe YouTube Tamzidan Mahdiyin */
 
 .logo {
   color: rgb(255, 255, 255);
@@ -116,6 +118,7 @@ section {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  padding-top: 0;  /* Hapus padding tambahan */
 }
 
 .main-container .content {
@@ -123,8 +126,6 @@ section {
   width: 40%;
   min-height: 100px;
 }
-
-/* Subscrbe YouTube Tamzidan Mahdiyin */
 
 .content h1 {
   font-size: clamp(1rem, 1rem + 5vw, 1.8rem);
@@ -281,6 +282,3 @@ section {
     margin-top: 10px;
   }
 }
-
-
-/* Subscrbe YouTube Tamzidan Mahdiyin */

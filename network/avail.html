@@ -293,7 +293,7 @@
         <!-- Box Judul -->
         <div class="box" data-aos="fade-up">
             <div class="box-header">
-                <h2>Privasea - Testnet</h2>
+                <h2>Avail - Turing Testnet</h2>
                 <div class="status">
                     <span>Status:</span>
                     <div class="status-logo active"></div>
@@ -304,37 +304,75 @@
         <!-- New Project Overview Box -->
         <div class="project-overview-box" data-aos="fade-up">
             <h2>Project Overview</h2>
-            <p>Privasea AI is Confidential AI network enabled by FHEML.</p>
+            <p>Avail is The unification layer for web3 </p>
             <div class="social-links">
-                <a href="https://www.privasea.ai"><i class="fa-brands fa-chrome"></i></a>
-                <a href="https://x.com/Privasea_ai"><i class="fa-brands fa-twitter"></i></a>
-                <a href="https://t.me/Privasea_ai"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://www.availproject.org"><i class="fa-brands fa-chrome"></i></a>
+                <a href="https://x.com/AvailProject"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://t.me/AvailCommunity"><i class="fa-brands fa-telegram"></i></a>
             </div>
         </div>
 
         <div class="main-container">
             <div class="box" data-aos="fade-up">
                 <h2>Installation Guide</h2>
-                <p>&#8226; Install Docker</p>
-                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>source <(wget -O - https://raw.githubusercontent.com/zunxbt/installation/main/docker.sh)</pre>
-                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo groupadd docker && sudo usermod -aG docker $(whoami) && newgrp docker</pre>
-                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>docker pull privasea/acceleration-node-beta:latest</pre>
+                <p>&#8226; Update and install packages</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo apt update
+sudo apt install make clang pkg-config libssl-dev build-essential</pre>
                 <p>&#8226; Create directory</p>
-                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>mkdir -p ~/privasea/config && cd ~/privasea</pre>
-                <p>&#8226; Run the Command</p>
-                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>docker run --rm -it -v "$HOME/privasea/config:/app/config" privasea/acceleration-node-beta:latest ./node-calc new_keystore</pre>
-                <p>&#8226; Move the keystore file to a new file</p>
-                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>docker run --rm -it -v "$HOME/privasea/config:/app/config" privasea/acceleration-node-beta:latest ./node-calc new_keystore</pre>
-                <p>&#8226; Now visit this <a href="https://deepsea-beta.privasea.ai/privanetixNode" target="_blank">Privanetix
-                        Dashboard</a></p>
-                <p>&#8226; Connect a wallet where you will recieve reward and then give the node any name, set up commission (I
-                    will use 1%), and then enter the node address you note down in above step and then click on Set up
-                    my node option.</p>
-                <p>&#8226; Now run the below command to start your Privasea Privanetix Node, Make sure to replace
-                    ENTER_YOUR_KEYSTORE_PASSWORD with your Keystore Password, you provided in the above steps</p>
-                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>KEYSTORE_PASSWORD=ENTER_YOUR_KEYSTORE_PASSWORD && docker run -d --name privanetix-node -v "$HOME/privasea/config:/app/config" -e KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD privasea/acceleration-node-beta:latest</pre>
-                <p>&#8226; For more information visit <a href="https://www.privasea.ai/privanetix-node" target="_blank">the
-                        docs</a>.</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>mkdir -p ${HOME}/avail-node
+mkdir -p ${HOME}/avail-node/data
+mkdir -p ${HOME}/avail-node/systemd</pre>
+                <p>&#8226; Extract binary</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>cd avail-node
+wget https://github.com/availproject/avail/releases/download/v1.8.0.0/amd64-ubuntu-2204-data-avail.tar.gz</pre>
+                <p>&#8226; Extract File</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>tar -xvzf amd64-ubuntu-2204-data-avail.tar.gz
+cp amd64-ubuntu-2204-data-avail data-avail</pre>
+                <p>&#8226; Create a service file</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo tee ${HOME}/avail-node/systemd/availd.service > /dev/null &lt;&lt;EOF
+[Unit]
+Description=Avail Validator
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+User=$(whoami)
+Type=simple
+Restart=always
+RestartSec=120
+ExecStart=${HOME}/avail-node/data-avail --base-path ${HOME}/avail-node/data --chain goldberg --port 30333 --validator --name "YOUR_NAME"
+[Install]
+WantedBy=multi-user.target
+EOF</pre>
+                <p>&#8226; Enable and start the service</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo ln -sf ${HOME}/avail-node/systemd/availd.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable availd</pre>
+                <p>&#8226; Start node</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo systemctl start availd</pre>
+                <p>&#8226; Check node logs</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo journalctl -fu availd</pre>
+                <p>&#8226; The node will output the following when started:</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>2023-06-03 20:36:29 Avail Node
+2023-06-03 20:36:29 ✌️  version 1.6.0-99b85257d6b
+2023-06-03 20:36:29 ❤️  by Anonymous, 2017-2023
+2023-06-03 20:36:29 📋 Chain specification: Avail Kate Testnet
+2023-06-03 20:36:29 🏷  Node name: bewildered-distance-1229
+2023-06-03 20:36:29 👤 Role:Authority
+2023-06-03 20:36:29 💾 Database: RocksDb at /Users/thunder/code/avail/data/chains/Avail Testnet_6831251e-0222-11ee-a2c3-c90377335962/db/full
+2023-06-03 20:36:29 ⛓  Native runtime: data-avail-9 (data-avail-0.tx1.au11)
+2023-06-03 20:36:35 👶 Creating empty BABE epoch changes on what appears to be first startup.
+2023-06-03 20:36:35 🏷  Local node identity is: 12D3KooWPt7odw3aeq7azZDugXjNuUvQNPU58n1VRBzY1YBqsjkr
+2023-06-03 20:36:35 Prometheus metrics extended with avail metrics
+2023-06-03 20:36:35 💻 Operating system: macos
+2023-06-03 20:36:35 💻 CPU architecture: aarch64
+2023-06-03 20:36:35 📦 Highest known block at #0
+2023-06-03 20:36:35 〽️ Prometheus exporter started at 127.0.0.1:9615
+2023-06-03 20:36:35 Running JSON-RPC HTTP server: addr=127.0.0.1:9933, allowed origins=["http://localhost:*", "http://127.0.0.1:*", "https://localhost:*", "https://127.0.0.1:*", "https://polkadot.js.org"]
+2023-06-03 20:36:35 Running JSON-RPC WS server: addr=127.0.0.1:9944, allowed origins=["http://localhost:*", "http://127.0.0.1:*", "https://localhost:*", "https://127.0.0.1:*", "https://polkadot.js.org"]
+2023-06-03 20:36:35 🏁 CPU score: 724.71 MiBs
+2023-06-03 20:36:35 🏁 Memory score: 41.49 GiBs
+2023-06-03 20:36:35 🏁 Disk score (seq. writes): 1.91 GiBs
+2023-06-03 20:36:35 🏁 Disk score (rand. writes): 454.66 MiBs</pre>
                 <p>&#8226; &#8226; &#8226; HAPPY RUNNING &#8226; &#8226; &#8226; </p>
             </div>
         </div>

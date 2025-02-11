@@ -65,9 +65,10 @@
             width: 15px;
             height: 15px;
             border-radius: 50%;
-            background-color: green;
+            background-color: rgb(9, 255, 9);
+            color: green;
             margin-left: 8px;
-            animation: blink 1s infinite;
+            animation: blink 0.8s infinite;
         }
 
         /* Blinking Animation */
@@ -276,20 +277,20 @@
         <div class="main-container">
             <div class="box" data-aos="fade-up">
                 <h2>Installation Guide</h2>
-                <p>Install Docker</p>
+                <p>&#8226; Install Docker</p>
                 <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>source <(wget -O - https://raw.githubusercontent.com/zunxbt/installation/main/docker.sh)</pre>
                 <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo groupadd docker && sudo usermod -aG docker $(whoami) && newgrp docker</pre>
-                <p>Install gaianet docker image and run</p>
+                <p>&#8226; Install gaianet docker image and run</p>
                 <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo docker run --name gaianet -p 6969:6969 -v $(pwd)/qdrant_storage:/root/gaianet/qdrant/storage:z gaianet/phi-3-mini-instruct-4k_paris:latest</pre>
-                <p>use this below command to get node-info</p>
+                <p>&#8226; use this below command to get node-info</p>
                 <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>docker exec -it gaianet /root/gaianet/bin/gaianet info</pre>
-                <p>Visit <a href="https://www.gaianet.ai/setting/nodes" target="_blank">Gaianet site</a>. and connect your wallet</p>
-                <p>Connect new node, here enter your Node ID and Device ID</p>
-                <p>After that, customize this URL using your Node ID, visit the modified URL, test chat</p>
+                <p>&#8226; Visit <a href="https://www.gaianet.ai/setting/nodes" target="_blank">Gaianet site</a>. and connect your wallet</p>
+                <p>&#8226; Connect new node, here enter your Node ID and Device ID</p>
+                <p>&#8226; After that, customize this URL using your Node ID, visit the modified URL, test chat</p>
                 <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>https://YOUR_NODE_ID.us.gaianet.network</pre>
-                <p>Backup you node ID (optional)</p>
+                <p>&#8226; Backup you node ID (optional)</p>
                 <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>docker exec -it gaianet cat /root/gaianet/nodeid.json</pre>
-                <p>HAPPY RUNNING</p>
+                <p>&#8226; &#8226; &#8226; HAPPY RUNNING &#8226; &#8226; &#8226; </p>
             </div>
         </div>
 
