@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +29,6 @@
             align-items: center;
         }
 
-        /* Header Section */
         header {
             width: 100%;
             padding: 1rem;
@@ -39,7 +39,6 @@
             text-align: left;
         }
 
-        /* Cancel Button */
         .cancel {
             cursor: pointer;
             position: absolute;
@@ -49,27 +48,12 @@
             font-size: 1.8rem;
         }
 
-        /* Main Section */
         .main-container {
             width: 90%;
             max-width: 1200px;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        /* Box Header */
-        .box-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .box-header h2, .status span {
-            font-size: 1.2rem;
-            color: white;
-            font-weight: 500;
         }
 
         .status {
@@ -86,12 +70,21 @@
             animation: blink 1s infinite;
         }
 
+        /* Blinking Animation */
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
-        /* Box Styling */
         .box {
             width: 100%;
             max-width: 1000px;
@@ -100,77 +93,163 @@
             padding: 1.5rem;
             box-shadow: 0 0 20px rgb(61, 55, 68);
             color: white;
-            transition: all 0.3s ease;
             margin-bottom: 2rem;
         }
 
-        .box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(104, 2, 221, 0.6);
-        }
-
-        .copy-box {
+        /* Flexbox layout for .box-header */
+        .box-header {
             display: flex;
             justify-content: space-between;
+            /* Space between Gaianet and Status */
             align-items: center;
-            background: gray;
-            word-wrap: break-word; /* Ensure text wraps properly on small screens */
         }
 
-        .copy-box p {
-            font-family: monospace; /* Make the text monospace */
+        .box-header h2 {
+            font-size: 1.5rem;
+            /* Adjusted to match the status header size */
         }
 
-        .copy-btn {
-            background: rgb(160, 80, 245);
+        pre {
+            font-family: monospace; /* Apply monospace font */
+            position: relative;
+            background: #1e1e1e;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+
+        .copy-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
             color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
             cursor: pointer;
             font-size: 1rem;
+            display: none;
+        }
+
+        pre:hover .copy-icon {
+            display: block;
+        }
+
+        /* New Project Overview Box */
+        .project-overview-box {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(66, 66, 66, 66);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 0 20px rgb(61, 55, 68);
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
             display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap; /* To ensure they wrap on small screens */
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap; /* To ensure they wrap on small screens */
+        }
+
+        .social-links i {
+            display: inline-flex;
+            justify-content: center;
             align-items: center;
-            gap: 5px;
-            transition: background 0.3s ease;
+            width: 3rem;
+            height: 3rem;
+            background-color: transparent;
+            border: 0.2rem solid rgb(8, 8, 8);
+            border-radius: 50%;
+            color: rgb(255, 255, 255);
+            margin: 0 15px;
+            font-size: 1.5rem;
+            transition: 0.2s linear;
         }
 
-        .copy-btn:hover {
-            background: rgba(104, 2, 221, 0.6);
+        .social-links i:hover {
+            scale: 1.3;
+            filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+            color: black;
+            background-color: rgb(255, 255, 255);
+            -webkit-filter: drop-shadow(0 0 10px rgb(255, 255, 255));
         }
 
-        h2 {
-            margin-bottom: 1rem; /* Jarak antara "Installation Guide" dan konten berikutnya */
-        }
-
-        p {
-            margin-bottom: 1rem; /* Jarak antara "Install Gaia Node" dan konten berikutnya */
-        }
-
-        @media (max-width: 768px) {
-            .box-header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+        /* Mobile Styles */
+        @media screen and (max-width: 768px) {
+            .main-container {
+                width: 100%;
+                padding: 1rem;
             }
-            .status {
-                margin-top: 10px;
+
+            .box-header h2 {
+                font-size: 1.2rem; /* Smaller text on mobile */
+            }
+
+            .social-links i {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.3rem;
+                margin: 5px; /* Less margin between icons */
+            }
+
+            .box {
+                padding: 1rem; /* Less padding on mobile */
+            }
+
+            header {
+                font-size: 0.9rem; /* Smaller font size for header on mobile */
+            }
+
+            pre {
+                font-size: 0.9rem; /* Smaller font size for code blocks */
+            }
+        }
+
+        /* Styles for very small devices */
+        @media screen and (max-width: 480px) {
+            header {
+                font-size: 0.8rem; /* Even smaller font size for small screens */
+            }
+
+            .box-header h2 {
+                font-size: 1rem; /* Smaller title for small screens */
+            }
+
+            .social-links i {
+                width: 2rem;
+                height: 2rem;
+                font-size: 1.2rem;
+            }
+
+            .box {
+                padding: 0.8rem; /* Further reduce padding */
+            }
+
+            pre {
+                font-size: 0.8rem; /* Smaller font size for very small screens */
             }
         }
     </style>
     <title>Network</title>
 </head>
+
 <body>
-    <!-- Cancel Button -->
     <div class="cancel" onclick="window.location.href='../service.html'">
         <i class="fa fa-times"></i>
     </div>
 
-    <!-- Header Section -->
     <header>
         <h1>Biglionaire</h1>
     </header>
-
     <div class="main-container">
         <!-- Box Judul -->
         <div class="box" data-aos="fade-up">
@@ -183,46 +262,51 @@
             </div>
         </div>
 
-        <!-- Box Installation -->
-        <div class="box" data-aos="fade-up">
-            <h2>Installation Guide</h2>
-            <p>Install Gaia Node</p>
-            <div class="box copy-box" data-aos="fade-up">
-                <p id="copyText">curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash source ~/.bashrc</p>
-                <button class="copy-btn" onclick="copyToClipboard('copyText')"> 
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            <p>Init with the qwen-1.5-0.5b-chat model</p>
-            <div class="box copy-box" data-aos="fade-up">
-                <p id="copyText2">gaianet init --config https://raw.githubusercontent.com/GaiaNet-AI/node-configs/main/qwen-1.5-0.5b-chat/config.json</p>
-                <button class="copy-btn" onclick="copyToClipboard('copyText2')"> 
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            <p>Start the node</p>
-            <div class="box copy-box" data-aos="fade-up">
-                <p id="copyText3">gaianet start</p>
-                <button class="copy-btn" onclick="copyToClipboard('copyText3')"> 
-                    <i class="fas fa-copy"></i>
-                </button>
+        <!-- New Project Overview Box -->
+        <div class="project-overview-box" data-aos="fade-up">
+            <h2>Project Overview</h2>
+            <p>Gaianet AI is Decentralizing AI Inferencing. Building a distributed and incentivized GenAI Agent Network.</p>
+            <div class="social-links">
+                <a href="https://www.gaianet.ai/"><i class="fa-brands fa-chrome"></i></a>
+                <a href="https://x.com/Gaianet_AI"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://t.me/Gaianet_AI"><i class="fa-brands fa-telegram"></i></a>
             </div>
         </div>
-    </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
+        <div class="main-container">
+            <div class="box" data-aos="fade-up">
+                <h2>Installation Guide</h2>
+                <p>Install Docker</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>source <(wget -O - https://raw.githubusercontent.com/zunxbt/installation/main/docker.sh)</pre>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo groupadd docker && sudo usermod -aG docker $(whoami) && newgrp docker</pre>
+                <p>Install gaianet docker image and run</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo docker run --name gaianet -p 6969:6969 -v $(pwd)/qdrant_storage:/root/gaianet/qdrant/storage:z gaianet/phi-3-mini-instruct-4k_paris:latest</pre>
+                <p>use this below command to get node-info</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>docker exec -it gaianet /root/gaianet/bin/gaianet info</pre>
+                <p>Visit <a href="https://www.gaianet.ai/setting/nodes" target="_blank">Gaianet site</a>. and connect your wallet</p>
+                <p>Connect new node, here enter your Node ID and Device ID</p>
+                <p>After that, customize this URL using your Node ID, visit the modified URL, test chat</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>https://YOUR_NODE_ID.us.gaianet.network</pre>
+                <p>Backup you node ID (optional)</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>docker exec -it gaianet cat /root/gaianet/nodeid.json</pre>
+                <p>HAPPY RUNNING</p>
+            </div>
+        </div>
 
-        // Function to copy text to clipboard
-        function copyToClipboard(id) {
-            const text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text).then(function() {
-                alert("Copied to clipboard!");
-            }, function(err) {
-                alert("Failed to copy text: " + err);
-            });
-        }
-    </script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+
+            function copyToClipboard(icon) {
+                const text = icon.parentElement.innerText.trim();
+                navigator.clipboard.writeText(text).then(() => {
+                    icon.classList.replace("fa-copy", "fa-check");
+                    setTimeout(() => icon.classList.replace("fa-check", "fa-copy"), 2000);
+                }).catch(err => {
+                    console.error("Failed to copy text: ", err);
+                });
+            }
+        </script>
 </body>
+
 </html>
