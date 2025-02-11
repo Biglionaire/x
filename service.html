@@ -140,8 +140,7 @@
 
         .services-header h1 {
             font-size: 2.5rem;
-            color: rgb(121, 3, 231);
-            text-shadow: 0 0 10px rgba(104, 2, 221, 0.2);
+            color: white
             margin-bottom: 1rem;
         }
 
@@ -189,6 +188,39 @@
             color: rgb(121, 3, 231);
             font-weight: bold;
         }
+
+        .service-price button {
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            background: rgb(121, 3, 231);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none; /* Menghilangkan underline jika tombol berada dalam link */
+            display: inline-block; /* Agar tombol tetap inline */
+        }
+
+        .service-price button:hover {
+            background-color: rgba(121, 3, 231, 0.8);
+            transform: translateY(-5px);
+        }
+
+/* Styling untuk link <a> yang membungkus tombol */
+        .service-price a {
+            display: inline-block; /* Membuat tombol terlihat seperti tombol biasa */
+            text-decoration: none; /* Hilangkan garis bawah */
+        }
+
+/* Agar tombol bisa responsif dan terlihat baik pada layar kecil */
+        @media (max-width: 640px) {
+            .service-price button {
+                width: 100%; /* Tombol akan lebar penuh pada layar kecil */
+                padding: 15px;
+            }
+        }
+
 
         @media (max-height: 800px) {
             body {
@@ -284,11 +316,15 @@
                 <!-- Web Development -->
                 <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
                     <div class="service-icon">
-                        <i class="fa-brands fa-ethereum"></i>
+                        <img src="img/gaia.jpg" alt="Network Icon" width="50" height="50">
                     </div>
-                    <h3 class="service-title">Network</h3>
-                    <p class="service-description">Coming soon</p>
-                    <div class="service-price">Under Development</div>
+                    <h3 class="service-title">Gaianet</h3>
+                    <p class="service-description">Gaianet-AI</p>
+                    <div class="service-price">
+                        <a href="network/gaianet.html">
+                            <button class="install-guide-button">Instalation Guide</button>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- UI/UX Design -->
@@ -298,7 +334,9 @@
                     </div>
                     <h3 class="service-title">Network</h3>
                     <p class="service-description">Coming soon</p>
-                    <div class="service-price">Under Development</div>
+                    <div class="service-price">
+                        <button class="install-guide-button">Instalation Guide</button>
+                    </div>
                 </div>
 
                 <!-- Mobile App Development -->

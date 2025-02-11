@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-image: url("../img/background.jpg");
+            background-size: cover;
+            overflow: auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header Section */
+        header {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.0);
+            color: white;
+            font-size: 1rem;
+            font-weight: 400;
+            text-align: left;
+        }
+
+        /* Cancel Button */
+        .cancel {
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        /* Main Section */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Box Header */
+        .box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .box-header h2, .status span {
+            font-size: 1.2rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+        }
+
+        .status-logo {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: green;
+            margin-left: 8px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Box Styling */
+        .box {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(66, 66, 66, 66);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 0 20px rgba(104, 2, 221, 0.4);
+            color: white;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(104, 2, 221, 0.6);
+        }
+
+        .copy-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: gray
+        }
+
+        .copy-btn {
+            background: rgba(104, 2, 221, 0.6);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: grey
+        }
+
+        @media (max-width: 768px) {
+            .box-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .status {
+                margin-top: 10px;
+            }
+        }
+    </style>
+    <title>Network</title>
+</head>
+<body>
+    <!-- Cancel Button -->
+    <div class="cancel" onclick="window.location.href='../service.html'">
+        <i class="fa fa-times"></i>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Biglionaire</h1>
+    </header>
+
+    <div class="main-container">
+        <!-- Box Judul -->
+        <div class="box" data-aos="fade-up">
+            <div class="box-header">
+                <h2>Gaianet - Testnet</h2>
+                <div class="status">
+                    <span>Status:</span>
+                    <div class="status-logo active"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Box Installation -->
+        <div class="box" data-aos="fade-up">
+            <h2>Installation Guide</h2>
+            <p>Install Gaia Node</p>
+            <div class="box copy-box" data-aos="fade-up">
+                <p id="copyText">curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash source ~/.bashrc</p>
+                <button class="copy-btn" onclick="copyToClipboard('copyText')"> 
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+            <p>Init with the qwen-1.5-0.5b-chat model</p>
+            <div class="box copy-box" data-aos="fade-up">
+                <p id="copyText2">gaianet init --config https://raw.githubusercontent.com/GaiaNet-AI/node-configs/main/qwen-1.5-0.5b-chat/config.json</p>
+                <button class="copy-btn" onclick="copyToClipboard('copyText2')"> 
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+            <p>Start the node</p>
+            <div class="box copy-box" data-aos="fade-up">
+                <p id="copyText3">gaianet start</p>
+                <button class="copy-btn" onclick="copyToClipboard('copyText3')"> 
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
