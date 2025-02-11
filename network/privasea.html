@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +29,6 @@
             align-items: center;
         }
 
-        /* Header Section */
         header {
             width: 100%;
             padding: 1rem;
@@ -39,7 +39,6 @@
             text-align: left;
         }
 
-        /* Cancel Button */
         .cancel {
             cursor: pointer;
             position: absolute;
@@ -49,27 +48,12 @@
             font-size: 1.8rem;
         }
 
-        /* Main Section */
         .main-container {
             width: 90%;
             max-width: 1200px;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        /* Box Header */
-        .box-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .box-header h2, .status span {
-            font-size: 1.2rem;
-            color: white;
-            font-weight: 500;
         }
 
         .status {
@@ -86,12 +70,21 @@
             animation: blink 1s infinite;
         }
 
+        /* Blinking Animation */
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
-        /* Box Styling */
         .box {
             width: 100%;
             max-width: 1000px;
@@ -100,87 +93,168 @@
             padding: 1.5rem;
             box-shadow: 0 0 20px rgb(61, 55, 68);
             color: white;
-            transition: all 0.3s ease;
             margin-bottom: 2rem;
         }
 
-        .box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(104, 2, 221, 0.6);
-        }
-
-        .copy-box {
+        /* Flexbox layout for .box-header */
+        .box-header {
             display: flex;
             justify-content: space-between;
+            /* Space between Gaianet and Status */
             align-items: center;
-            background: gray;
-            word-wrap: break-word; /* Ensure text wraps properly on small screens */
         }
 
-        .copy-box p {
-            font-family: monospace; /* Make the text monospace */
+        .box-header h2 {
+            font-size: 1.5rem;
+            /* Adjusted to match the status header size */
         }
 
-        .copy-btn {
-            background: rgb(160, 80, 245);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: background 0.3s ease;
-        }
-
-        .copy-btn:hover {
-            background: rgba(104, 2, 221, 0.6);
-        }
-
-        h2 {
-            margin-bottom: 1rem; /* Jarak antara "Installation Guide" dan konten berikutnya */
-        }
-
-        p {
-            margin-bottom: 1rem; /* Jarak antara "Install Gaia Node" dan konten berikutnya */
-        }
-
-        p2, p3 {
-            font-size: 1rem;
+        pre {
+            position: relative;
+            background: #1e1e1e;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
             margin-bottom: 1rem;
         }
 
-        @media (max-width: 768px) {
-            .box-header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+        .copy-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            display: none;
+        }
+
+        pre:hover .copy-icon {
+            display: block;
+        }
+
+        /* New Project Overview Box */
+        .project-overview-box {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(66, 66, 66, 66);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 0 20px rgb(61, 55, 68);
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap; /* To ensure they wrap on small screens */
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap; /* To ensure they wrap on small screens */
+        }
+
+        .social-links i {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 3rem;
+            height: 3rem;
+            background-color: transparent;
+            border: 0.2rem solid rgb(8, 8, 8);
+            border-radius: 50%;
+            color: rgb(255, 255, 255);
+            margin: 0 15px;
+            font-size: 1.5rem;
+            transition: 0.2s linear;
+        }
+
+        .social-links i:hover {
+            scale: 1.3;
+            filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+            color: black;
+            background-color: rgb(255, 255, 255);
+            -webkit-filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+        }
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 768px) {
+            .main-container {
+                width: 100%;
+                padding: 1rem;
             }
-            .status {
-                margin-top: 10px;
+
+            .box-header h2 {
+                font-size: 1.2rem; /* Smaller text on mobile */
+            }
+
+            .social-links i {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.3rem;
+                margin: 5px; /* Less margin between icons */
+            }
+
+            .box {
+                padding: 1rem; /* Less padding on mobile */
+            }
+
+            header {
+                font-size: 0.9rem; /* Smaller font size for header on mobile */
+            }
+
+            pre {
+                font-size: 0.9rem; /* Smaller font size for code blocks */
+            }
+        }
+
+        /* Styles for very small devices */
+        @media screen and (max-width: 480px) {
+            header {
+                font-size: 0.8rem; /* Even smaller font size for small screens */
+            }
+
+            .box-header h2 {
+                font-size: 1rem; /* Smaller title for small screens */
+            }
+
+            .social-links i {
+                width: 2rem;
+                height: 2rem;
+                font-size: 1.2rem;
+            }
+
+            .box {
+                padding: 0.8rem; /* Further reduce padding */
+            }
+
+            pre {
+                font-size: 0.8rem; /* Smaller font size for very small screens */
             }
         }
     </style>
     <title>Network</title>
 </head>
+
 <body>
-    <!-- Cancel Button -->
     <div class="cancel" onclick="window.location.href='../service.html'">
         <i class="fa fa-times"></i>
     </div>
 
-    <!-- Header Section -->
     <header>
         <h1>Biglionaire</h1>
     </header>
-
     <div class="main-container">
         <!-- Box Judul -->
         <div class="box" data-aos="fade-up">
             <div class="box-header">
-                <h2>Privasea - Testnet</h2>
+                <h2>Gaianet - Testnet</h2>
                 <div class="status">
                     <span>Status:</span>
                     <div class="status-logo active"></div>
@@ -188,67 +262,53 @@
             </div>
         </div>
 
-        <!-- Box Installation -->
-        <div class="box" data-aos="fade-up">
-            <h2>Installation Guide</h2>
-            <p>Install Docker.</p>
-            <div class="box copy-box" data-aos="fade-up">
-                <p id="copyText">source <(wget -O - https://raw.githubusercontent.com/zunxbt/installation/main/docker.sh)</p>
-                <button class="copy-btn" onclick="copyToClipboard('copyText')"> 
-                    <i class="fas fa-copy"></i>
-                </button>
+        <!-- New Project Overview Box -->
+        <div class="project-overview-box" data-aos="fade-up">
+            <h2>Project Overview</h2>
+            <p>Privasea AI is Confidential AI network enabled by FHEML.</p>
+            <div class="social-links">
+                <a href="https://www.privasea.ai"><i class="fa-brands fa-chrome"></i></a>
+                <a href="https://x.com/Privasea_ai"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://t.me/Privasea_ai"><i class="fa-brands fa-telegram"></i></a>
             </div>
-            <div class="box copy-box" data-aos="fade-up">
-                <p id="copyText4">sudo groupadd docker && sudo usermod -aG docker $(whoami) && newgrp docker</p>
-                <button class="copy-btn" onclick="copyToClipboard('copyText4')"> 
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            <div class="box copy-box" data-aos="fade-up">
-                <p id="copyText5">docker pull privasea/acceleration-node-beta:latest</p>
-                <button class="copy-btn" onclick="copyToClipboard('copyText5')"> 
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            <p>Create directory.</p>
-            <div class="box copy-box" data-aos="fade-up">
-                <p id="copyText2">mkdir -p ~/privasea/config && cd ~/privasea</p>
-                <button class="copy-btn" onclick="copyToClipboard('copyText2')"> 
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            <p>Run the Command.</p>
-            <div class="box copy-box" data-aos="fade-up">
-                <p id="copyText3">docker run --rm -it -v "$HOME/privasea/config:/app/config" privasea/acceleration-node-beta:latest ./node-calc new_keystore</p>
-                <button class="copy-btn" onclick="copyToClipboard('copyText3')"> 
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            <p>Now visit this <a href="https://deepsea-beta.privasea.ai/privanetixNode" target="_blank">Privanetix Dashboard</a>.</p>
-            <p2>Connect a wallet where you will receive rewards, then give the node any name, set up commission (I will use 1%), and then enter the node address you noted down in the above step and click on Set up my node. and run command below</p2>
-            <div class="box copy-box" data-aos="fade-up">
-                <p id="copyText3">KEYSTORE_PASSWORD=ENTER_YOUR_KEYSTORE_PASSWORD && docker run -d --name privanetix-node -v "$HOME/privasea/config:/app/config" -e KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD privasea/acceleration-node-beta:latest</p>
-                <button class="copy-btn" onclick="copyToClipboard('copyText3')"> 
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            <p>For more information visit <a href="https://www.privasea.ai/privanetix-node" target="_blank">the docs</a>.</p>
         </div>
-    </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
+        <div class="main-container">
+            <div class="box" data-aos="fade-up">
+                <h2>Installation Guide</h2>
+                <p>Install Docker</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>source <(wget -O - https://raw.githubusercontent.com/zunxbt/installation/main/docker.sh)</pre>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo groupadd docker && sudo usermod -aG docker $(whoami) && newgrp docker</pre>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>docker pull privasea/acceleration-node-beta:latest</pre>
+                <p>Create directory</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>mkdir -p ~/privasea/config && cd ~/privasea</pre>
+                <p>Run the Command</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>docker run --rm -it -v "$HOME/privasea/config:/app/config" privasea/acceleration-node-beta:latest ./node-calc new_keystore</pre>
+                <p>Move the keystore file to a new file</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>docker run --rm -it -v "$HOME/privasea/config:/app/config" privasea/acceleration-node-beta:latest ./node-calc new_keystore</pre>
+                <p>Now visit this <a href="https://deepsea-beta.privasea.ai/privanetixNode" target="_blank">Privanetix Dashboard</a></p>
+                <p>Connect a wallet where you will recieve reward and then give the node any name, set up commission (I will use 1%), and then enter the node address you note down in above step and then click on Set up my node option.</p>
+                <p>Now run the below command to start your Privasea Privanetix Node, Make sure to replace ENTER_YOUR_KEYSTORE_PASSWORD with your Keystore Password, you provided in the above steps</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>KEYSTORE_PASSWORD=ENTER_YOUR_KEYSTORE_PASSWORD && docker run -d --name privanetix-node -v "$HOME/privasea/config:/app/config" -e KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD privasea/acceleration-node-beta:latest</pre>
+                <p>For more information visit <a href="https://www.privasea.ai/privanetix-node" target="_blank">the docs</a>.</p>
+                <p>HAPPY RUNNING</p>
+            </div>
+        </div>
 
-        // Function to copy text to clipboard
-        function copyToClipboard(id) {
-            const text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text).then(function() {
-                alert("Copied to clipboard!");
-            }, function(err) {
-                alert("Failed to copy text: " + err);
-            });
-        }
-    </script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+
+            function copyToClipboard(icon) {
+                const text = icon.parentElement.innerText.trim();
+                navigator.clipboard.writeText(text).then(() => {
+                    icon.classList.replace("fa-copy", "fa-check");
+                    setTimeout(() => icon.classList.replace("fa-check", "fa-copy"), 2000);
+                }).catch(err => {
+                    console.error("Failed to copy text: ", err);
+                });
+            }
+        </script>
 </body>
+
 </html>
