@@ -106,7 +106,7 @@ nav {
 
 section {
   width: 100%;
-  min-height: 90vh; /* Ensure it's at least 90% of the viewport height */
+  height: 90vh; /* Ensure it's at least 90% of the viewport height */
   overflow: auto;  /* Allow scrolling within the section if content overflows */
 }
 
