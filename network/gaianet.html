@@ -113,7 +113,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: gray
+            background: gray;
+            word-wrap: break-word; /* Ensure text wraps properly on small screens */
+        }
+
+        .copy-box p {
+            font-family: monospace; /* Make the text monospace */
         }
 
         .copy-btn {
@@ -131,7 +136,7 @@
         }
 
         .copy-btn:hover {
-            background: grey
+            background: grey;
         }
 
         @media (max-width: 768px) {
@@ -200,6 +205,16 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
+
+        // Function to copy text to clipboard
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                alert("Copied to clipboard!");
+            }, function(err) {
+                alert("Failed to copy text: " + err);
+            });
+        }
     </script>
 </body>
 </html>
