@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-image: url("../img/background.jpg");
+            background-size: cover;
+            overflow: auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.0);
+            color: white;
+            font-size: 1rem;
+            font-weight: 400;
+            text-align: left;
+        }
+
+        .cancel {
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+        }
+
+        .status-logo {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgb(9, 255, 9);
+            color: green;
+            margin-left: 8px;
+            animation: blink 0.8s infinite;
+        }
+
+        /* Blinking Animation */
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .box {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(66, 66, 66, 66);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 0 20px rgb(61, 55, 68);
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        /* Flexbox layout for .box-header */
+        .box-header {
+            display: flex;
+            justify-content: space-between;
+            /* Space between Gaianet and Status */
+            align-items: center;
+        }
+
+        .box-header h2 {
+            font-size: 1.5rem;
+            /* Adjusted to match the status header size */
+        }
+
+        pre {
+            font-family: monospace; /* Apply monospace font */
+            position: relative;
+            background: #1e1e1e;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+
+        .copy-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            display: none;
+        }
+
+        pre:hover .copy-icon {
+            display: block;
+        }
+
+        /* New Project Overview Box */
+        .project-overview-box {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(66, 66, 66, 66);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 0 20px rgb(61, 55, 68);
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap; /* To ensure they wrap on small screens */
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap; /* To ensure they wrap on small screens */
+        }
+
+        .social-links i {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 3rem;
+            height: 3rem;
+            background-color: transparent;
+            border: 0.2rem solid rgb(8, 8, 8);
+            border-radius: 50%;
+            color: rgb(255, 255, 255);
+            margin: 0 15px;
+            font-size: 1.5rem;
+            transition: 0.2s linear;
+        }
+
+        .social-links i:hover {
+            scale: 1.3;
+            filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+            color: black;
+            background-color: rgb(255, 255, 255);
+            -webkit-filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 768px) {
+            .main-container {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .box-header h2 {
+                font-size: 1.2rem; /* Smaller text on mobile */
+            }
+
+            .social-links i {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.3rem;
+                margin: 5px; /* Less margin between icons */
+            }
+
+            .box {
+                padding: 1rem; /* Less padding on mobile */
+            }
+
+            header {
+                font-size: 0.9rem; /* Smaller font size for header on mobile */
+            }
+
+            pre {
+                font-size: 0.9rem; /* Smaller font size for code blocks */
+            }
+        }
+
+        /* Styles for very small devices */
+        @media screen and (max-width: 480px) {
+            header {
+                font-size: 0.8rem; /* Even smaller font size for small screens */
+            }
+
+            .box-header h2 {
+                font-size: 1rem; /* Smaller title for small screens */
+            }
+
+            .social-links i {
+                width: 2rem;
+                height: 2rem;
+                font-size: 1.2rem;
+            }
+
+            .box {
+                padding: 0.8rem; /* Further reduce padding */
+            }
+
+            pre {
+                font-size: 0.8rem; /* Smaller font size for very small screens */
+            }
+        }
+    </style>
+    <title>Network</title>
+</head>
+
+<body>
+    <div class="cancel" onclick="window.location.href='../service.html'">
+        <i class="fa fa-times"></i>
+    </div>
+
+    <header>
+        <h1>Biglionaire</h1>
+    </header>
+    <div class="main-container">
+        <!-- Box Judul -->
+        <div class="box" data-aos="fade-up">
+            <div class="box-header">
+                <h2>T3rn - Testnet</h2>
+                <div class="status">
+                    <span>Status:</span>
+                    <div class="status-logo active"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Project Overview Box -->
+        <div class="project-overview-box" data-aos="fade-up">
+            <h2>Project Overview</h2>
+            <p>T3rn is Superior swapping for users, powerful modularity for builders. </p>
+            <div class="social-links">
+                <a href="https://www.t3rn.io/"><i class="fa-brands fa-chrome"></i></a>
+                <a href="https://x.com/t3rn_io"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://t.me/T3RN_official"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="box" data-aos="fade-up">
+                <h2>Installation Guide</h2>
+                <p>&#8226; IDownload Binary</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>curl -L -o executor-linux-v0.27.0.tar.gz https://github.com/t3rn/executor-release/releases/download/v0.27.0/executor-linux-v0.27.0.tar.gz && tar -xzvf executor-linux-v0.27.0.tar.gz && rm -rf executor-linux-v0.27.0.tar.gz && cd executor/executor/bin</pre>
+                <p>&#8226; Create service</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo tee /etc/systemd/system/t3rn-executor.service > /dev/null &lt;&lt;EOF
+[Unit]
+Description=t3rn Executor Service
+After=network.target
+[Service]
+ExecStart=$HOME/executor/executor/bin/executor
+Environment="NODE_ENV=testnet"
+Environment="LOG_LEVEL=debug"
+Environment="LOG_PRETTY=false"
+Environment="PRIVATE_KEY_LOCAL=0xYour_private_keys"
+Environment="ENABLED_NETWORKS=arbitrum-sepolia,base-sepolia,optimism-sepolia,l1rn"
+Environment="EXECUTOR_PROCESS_PENDING_ORDERS_FROM_API=false"
+Restart=always
+RestartSec=5
+User=testnet
+[Install]
+WantedBy=multi-user.target
+EOF</pre>
+                <p>&#8226; Enable and Start the t3rn Executor Node Service</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo systemctl daemon-reload
+sudo systemctl enable t3rn-executor.service
+sudo systemctl start t3rn-executor.service</pre>
+                <p>&#8226; Check Logs</p>
+                <pre><i class="fas fa-copy copy-icon" onclick="copyToClipboard(this)"></i>sudo journalctl -u t3rn-executor.service -f --no-hostname -o cat</pre>
+                <p>&#8226; &#8226; &#8226; HAPPY RUNNING &#8226; &#8226; &#8226; </p>
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+
+            function copyToClipboard(icon) {
+                const text = icon.parentElement.innerText.trim();
+                navigator.clipboard.writeText(text).then(() => {
+                    icon.classList.replace("fa-copy", "fa-check");
+                    setTimeout(() => icon.classList.replace("fa-check", "fa-copy"), 2000);
+                }).catch(err => {
+                    console.error("Failed to copy text: ", err);
+                });
+            }
+        </script>
+</body>
+
+</html>
